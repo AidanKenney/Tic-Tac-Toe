@@ -8,12 +8,10 @@ const store = require('./../store')
 const onSignUp = function (event) {
   event.preventDefault()
   // get event info
-  console.log('event object is', event)
   // get target of event -- the form
   const form = event.target
   // get values from form
   const data = getFormFields(form)
-  console.log('data is', data)
   // send values via AJAX request to API
   api.signUp(data)
   // handle successful API response
@@ -24,11 +22,8 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('event object is', event)
   const form = event.target
-  console.log(form)
   const data = getFormFields(form)
-  console.log('data is', data)
 
   api.signIn(data)
     .then(ui.onSignInSuccess)
@@ -44,10 +39,8 @@ const onSignOut = function (token) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('event object is', event)
   const form = event.target
   const data = getFormFields(form)
-  console.log('data is ', data)
 
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
