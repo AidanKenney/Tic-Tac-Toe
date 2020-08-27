@@ -16,11 +16,25 @@ const onSignUp = function (event) {
   // send values via AJAX request to API
   api.signUp(data)
   // handle successful API response
-  .then(ui.onSignUpSuccess)
+    .then(ui.onSignUpSuccess)
   // handle failed API response
-  .catch(ui.onSignUpFailure)
+    .catch(ui.onSignUpFailure)
+}
+
+const onSignIn = function (event) {
+  event.preventDefault()
+  console.log('event object is', event)
+  const form = event.target
+  console.log(form)
+  const data = getFormFields(form)
+  console.log('data is', data)
+
+  api.signIn(data)
+    .then(ui.onSignInSuccess)
+    .catch(ui.onSignInFailure)
 }
 
 module.exports = {
-  onSignUp: onSignUp
+  onSignUp: onSignUp,
+  onSignIn: onSignIn
 }

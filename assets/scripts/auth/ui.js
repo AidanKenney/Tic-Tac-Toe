@@ -3,12 +3,20 @@
 const onSignUpSuccess = function (response) {
   console.log('response is ', response)
 }
-
 const onSignUpFailure = function (error) {
   console.log('error is', error)
 }
 
+const onSignInSuccess = function (response) {
+  console.log('response is ', response)
+}
+const onSignInFailure = function (error) {
+  console.log('error is ', error)
+}
+
 module.exports = {
   onSignUpSuccess,
-  onSignUpFailure
+  onSignUpFailure,
+  onSignInSuccess,
+  onSignInFailure
 }
