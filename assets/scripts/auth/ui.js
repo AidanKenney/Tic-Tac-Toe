@@ -20,9 +20,15 @@ const onSignInFailure = function (error) {
 const onSignOutSuccess = function (response) {
   console.log('Success! response is', response)
 }
-
 const onSignOutFailure = function (error) {
   console.log('error is', error)
+}
+
+const onChangePasswordSuccess = function (response) {
+  console.log('Change Pass success, response is ', response)
+}
+const onChangePasswordFailure = function (error) {
+  console.log('Change password failed, error is', error)
 }
 
 module.exports = {
@@ -31,5 +37,7 @@ module.exports = {
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure
 }
