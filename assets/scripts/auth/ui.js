@@ -4,7 +4,7 @@ const store = require('./../store')
 
 const onSignUpSuccess = function (response) {
   store.user = response.user
-  $('#msg').text('Sign Up successful! Welcome ' + store.user.email +'. Please Sign In.')
+  $('#msg').text('Sign Up successful! Welcome ' + store.user.email + '. Please Sign In.')
   $('#sign-up').trigger('reset')
   $('#sign-up').hide()
 }
@@ -17,11 +17,13 @@ const onSignUpFailure = function (error) {
 const onSignInSuccess = function (response) {
   store.user = response.user
   $('#msg').text('Sign in successful! Welcome ' + store.user.email)
+  console.log(response)
   $('#sign-in').trigger('reset')
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#sign-out').show()
   $('#change-password').show()
+  $('#new-game').show()
 }
 const onSignInFailure = function (error) {
   $('#msg').text('Sign in failed, please try again.')
@@ -52,6 +54,21 @@ const onChangePasswordFailure = function (error) {
   console.log('Change password failed, error is', error)
 }
 
+const onNewGameSuccess = function (response) {
+  console.log('Success! New game here', response)
+}
+const onNewGameFailure = function (error) {
+  console.log('Failure, error is', error)
+}
+
+const onGetAllGamesSuccess = function (response) {
+  console.log('Success! Here are your games', response)
+}
+
+const onGetAllGamesFailure = function (error) {
+  console.log('Failure, error is', error)
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -60,5 +77,9 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onChangePasswordSuccess,
-  onChangePasswordFailure
+  onChangePasswordFailure,
+  onNewGameSuccess,
+  onNewGameFailure,
+  onGetAllGamesSuccess,
+  onGetAllGamesFailure
 }

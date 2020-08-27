@@ -36,9 +36,28 @@ const changePassword = function (data) {
   })
 }
 
+const newGame = function (token) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: { Authorization: 'Token token=' + store.user.token },
+    data: '{}'
+  })
+}
+
+const getAllGames = function (token) {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: { Authorization: 'Token token=' + store.user.token }
+  })
+}
+
 module.exports = {
   signUp: signUp,
   signIn: signIn,
   signOut: signOut,
-  changePassword: changePassword
+  changePassword: changePassword,
+  newGame: newGame,
+  getAllGames: getAllGames
 }

@@ -12,8 +12,11 @@ $(() => {
   // your JS code goes here
   $('#sign-out').hide()
   $('#change-password').hide()
+  $('#new-game').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
+  $('#new-game').on('click', authEvents.onNewGame)
+  $('#get-all-games').on('click', authEvents.onGetAllGames)
 })
