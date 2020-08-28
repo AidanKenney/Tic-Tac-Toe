@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./../store')
+const currentGame = require('./../currentGame')
 
 const onSignUpSuccess = function (response) {
   store.user = response.user
@@ -57,6 +58,8 @@ const onChangePasswordFailure = function (error) {
 }
 
 const onNewGameSuccess = function (response) {
+  currentGame.game = response.game
+  console.log(currentGame.game._id)
   console.log('Success! New game here', response)
   $('.container').show()
 }
@@ -72,6 +75,13 @@ const onGetAllGamesFailure = function (error) {
   console.log('Failure, error is', error)
 }
 
+const onBoardClickSuccess = function (response) {
+  console.log('Success! Here is your updated game', response)
+}
+
+const onBoardClickFailure = function (error) {
+  console.log('Error, game not updated', error)
+}
 // const onShowGameSuccess = function (response) {
 //   console.log('Succes! Response is', response)
 // }
@@ -91,7 +101,9 @@ module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onGetAllGamesSuccess,
-  onGetAllGamesFailure
+  onGetAllGamesFailure,
+  onBoardClickSuccess,
+  onBoardClickFailure
   // onShowGameSuccess,
   // onShowGameFailure
 }

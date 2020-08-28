@@ -63,6 +63,10 @@ const onGetAllGames = function (token) {
 
 const onBoardClick = function (event) {
   console.log(event.target.id)
+  const data = event.target.id
+  api.boardClick(data)
+    .then(ui.onBoardClickSuccess)
+    .catch(ui.onBoardClickFailure)
 }
 
 // const onShowGame = function (event) {

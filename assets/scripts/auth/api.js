@@ -2,6 +2,7 @@
 
 const config = require('./../config')
 const store = require('./../store')
+const currentGame = require('./../currentGame')
 
 const signUp = function (data) {
   return $.ajax({
@@ -53,6 +54,23 @@ const getAllGames = function (token) {
   })
 }
 
+const boardClick = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + currentGame.game._id,
+    method: 'PATCH',
+    headers: { Authorization: 'Token token=' + store.user.token },
+    data: {
+      game: {
+        cell: {
+          index: data,
+          value: 'x'
+        },
+        over: false
+      }
+    }
+  })
+}
+
 // const showGame = function (data, token) {
 //   $.ajax({
 //     url: config.apiUrl + '/games/' + data.game.id,
@@ -68,5 +86,6 @@ module.exports = {
   changePassword: changePassword,
   newGame: newGame,
   getAllGames: getAllGames,
+  boardClick: boardClick
   // showGame: showGame
 }
