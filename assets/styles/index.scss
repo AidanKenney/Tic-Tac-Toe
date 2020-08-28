@@ -4,22 +4,74 @@
   border: 1px solid black;
 }
 
-#container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
+.container {
+  // Set the board container to take up 100% of the viewport's height
+  // in this case that's the height of the browser
+  height: 100vh;
 }
 
-#row {
-  display: flex;
-  flex-flow: row nowrap;
+.board {
+  // set max height and min width of the boardClick// 100vh -  100% of the viewport height
+  // use method called 'calc' to subtract some space around each side
+  max-height: calc(100vh - 100px);
+  min-width: calc(100vh - 100px);
+  // setting margin to auto makes left and right margins same size, centers elements
+  margin: auto;
+
+  // add cat background to board:
+  // background: url('public/cat.jpg'); no repeat center center;
+  // background-size: cover;
 }
 
-.game-board {
-  border: 1px solid black;
-  display: inline-block;
+.box {
   background: white;
-  margin: 10px 0 0 2%;
-  height: 200px;
-  width: 200px;
+  // set min height for each box to  be a third of the parent's min-width
+  // (board's height)
+  // calc method will take 100% of parent's height and divide by 3
+  min-height: calc(100% / 3);
+
+  // set each box to have 'display' be 'flex so we can center the content in the center of box
+  display: flex;
+  //center the content along the main axis (left-to-right because flex direction defaults to row)
+  justify-content: center;
+  //center content along cross-axis (top to bottom, because cross axis is perp. to main axis)
+  align-items: center;
+
+  // use 'vh' to have the font-size change as the viewport height changes
+  font-size: 15vh;
+
+  // add a shadow to the x's and o's
+  // place shadow 2px to right, 2px below the text
+  // set the shadow color to be black & 25% opacity
+  text-shadow: 2px 2px rgba(0, 0, 0, .25);
+
+  // prevent the suer from being ablw to select the text
+  user-select: none;
+
+  // we want to have borders on the right of each box and the bottom of each box
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+
+  // & is sass indicates a nested style. Same doing .box:nth-child(3n) in its down separate block.
+  // select 3 right boxes using ':nth-child' -- selects elements based on their position to their siblings
+  // Pass nth-child the value 3n, which will select every 3rd box
+  // 3rd box, then 6th box, then 9th box
+  &:nth-child(3n) {
+    border-right: 0px;
+  }
+
+  // Select the 3 bottom boxes using nth-last-child -- selects elements but counting from the end
+  // -1 + 3 represents the last 3 elements among a group of siblings
+  // Break it down: when n is 0: (-1 * 0) + 3 // third from nth-last-child
+  // when n is 1: (-1 * 1) + 2 = 2nd to last boxe
+  // when n is 2 (-1 * 2) + 1 = 1st to last box.
+  //Then we stop because no more elements
+  &:nth-last-child(-1n + 3) {
+    border-bottom: 0px;
+  }
+  //add some color when we hover on a box:
+  &:hover {
+    background-color: LightSteelBlue;
+    cursor: pointer;
+  }
 }

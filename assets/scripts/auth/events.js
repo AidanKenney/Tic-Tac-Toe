@@ -61,12 +61,15 @@ const onGetAllGames = function (token) {
     .catch(ui.onGetAllGamesFailure)
 }
 
+let playerValue = 'X'
+
 const onBoardClick = function (event) {
-  console.log(event.target.id)
   const data = event.target.id
-  api.boardClick(data)
+  $('#' + data).text(playerValue)
+  api.boardClick(data, playerValue)
     .then(ui.onBoardClickSuccess)
     .catch(ui.onBoardClickFailure)
+  playerValue = playerValue === 'O' ? 'X' : 'O'
 }
 
 // const onShowGame = function (event) {
