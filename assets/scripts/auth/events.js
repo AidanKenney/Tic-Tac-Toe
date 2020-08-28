@@ -61,16 +61,19 @@ const onGetAllGames = function (token) {
     .catch(ui.onGetAllGamesFailure)
 }
 
-const onShowGame = function (event) {
-  event.preventDefault()
-  const form = event.target
-  const data = getFormFields(form)
-  console.log(data.game.id)
-
-  api.showGame(data)
-    // .then(ui.onShowGameSuccess)
-    // .catch(ui.onShowGameFailure)
+const onBoardClick = function (event) {
+  console.log(event.target.id)
 }
+
+// const onShowGame = function (event) {
+//   event.preventDefault()
+//   const form = event.target
+//   const data = getFormFields(form)
+//   console.log(data.game.id)
+//   api.showGame(data)
+//     .then(ui.onShowGameSuccess)
+//     .catch(ui.onShowGameFailure)
+// }
 
 module.exports = {
   onSignUp: onSignUp,
@@ -79,5 +82,6 @@ module.exports = {
   onChangePassword: onChangePassword,
   onNewGame: onNewGame,
   onGetAllGames: onGetAllGames,
-  onShowGame: onShowGame
+  onBoardClick: onBoardClick
+  // onShowGame: onShowGame
 }

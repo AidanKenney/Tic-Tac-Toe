@@ -25,7 +25,7 @@ const onSignInSuccess = function (response) {
   $('#change-password').show()
   $('#new-game').show()
   $('#get-all-games').show()
-  $('#show-game').show()
+  // $('#show-game').show()
 }
 const onSignInFailure = function (error) {
   $('#msg').text('Sign in failed, please try again.')
@@ -58,6 +58,7 @@ const onChangePasswordFailure = function (error) {
 
 const onNewGameSuccess = function (response) {
   console.log('Success! New game here', response)
+  $('.container').show()
 }
 const onNewGameFailure = function (error) {
   console.log('Failure, error is', error)
@@ -71,13 +72,12 @@ const onGetAllGamesFailure = function (error) {
   console.log('Failure, error is', error)
 }
 
-const onShowGameSuccess = function (response) {
-  console.log('Succes! Response is', response)
-}
-
-const onShowGameFailure = function (error) {
-  console.log('Failure. Error is', error)
-}
+// const onShowGameSuccess = function (response) {
+//   console.log('Succes! Response is', response)
+// }
+// const onShowGameFailure = function (error) {
+//   console.log('Failure. Error is', error)
+// }
 
 module.exports = {
   onSignUpSuccess,
@@ -91,7 +91,7 @@ module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onGetAllGamesSuccess,
-  onGetAllGamesFailure,
-  onShowGameSuccess,
-  onShowGameFailure
+  onGetAllGamesFailure
+  // onShowGameSuccess,
+  // onShowGameFailure
 }

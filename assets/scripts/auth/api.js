@@ -53,12 +53,13 @@ const getAllGames = function (token) {
   })
 }
 
-const showGame = function (object) {
-  $.ajax({
-    url: config.apiUrl + '/games/' + object.game.id,
-    method: 'GET'
-  })
-}
+// const showGame = function (data, token) {
+//   $.ajax({
+//     url: config.apiUrl + '/games/' + data.game.id,
+//     method: 'GET',
+//     headers: { Authorization: 'Token token=' + store.user.token }
+//   })
+// }
 
 module.exports = {
   signUp: signUp,
@@ -67,5 +68,5 @@ module.exports = {
   changePassword: changePassword,
   newGame: newGame,
   getAllGames: getAllGames,
-  showGame: showGame
+  // showGame: showGame
 }

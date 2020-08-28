@@ -3,3 +3,23 @@
 .form-field {
   border: 1px solid black;
 }
+
+#container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+#row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.game-board {
+  border: 1px solid black;
+  display: inline-block;
+  background: white;
+  margin: 10px 0 0 2%;
+  height: 200px;
+  width: 200px;
+}
