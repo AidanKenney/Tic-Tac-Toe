@@ -53,11 +53,19 @@ const getAllGames = function (token) {
   })
 }
 
+const showGame = function (object) {
+  $.ajax({
+    url: config.apiUrl + '/games/' + object.game.id,
+    method: 'GET'
+  })
+}
+
 module.exports = {
   signUp: signUp,
   signIn: signIn,
   signOut: signOut,
   changePassword: changePassword,
   newGame: newGame,
-  getAllGames: getAllGames
+  getAllGames: getAllGames,
+  showGame: showGame
 }

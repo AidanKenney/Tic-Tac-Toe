@@ -61,11 +61,23 @@ const onGetAllGames = function (token) {
     .catch(ui.onGetAllGamesFailure)
 }
 
+const onShowGame = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
+  console.log(data.game.id)
+
+  api.showGame(data)
+    // .then(ui.onShowGameSuccess)
+    // .catch(ui.onShowGameFailure)
+}
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onSignOut: onSignOut,
   onChangePassword: onChangePassword,
   onNewGame: onNewGame,
-  onGetAllGames: onGetAllGames
+  onGetAllGames: onGetAllGames,
+  onShowGame: onShowGame
 }
