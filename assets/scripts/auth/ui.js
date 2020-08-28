@@ -76,6 +76,8 @@ const onGetAllGamesFailure = function (error) {
 }
 
 const onBoardClickSuccess = function (response) {
+  currentGame.game = response.game
+  console.log(currentGame)
   console.log('Success! Here is your updated game', response)
 }
 

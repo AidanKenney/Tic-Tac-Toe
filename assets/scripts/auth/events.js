@@ -61,17 +61,7 @@ const onGetAllGames = function (token) {
     .catch(ui.onGetAllGamesFailure)
 }
 
-let playerValue = 'X'
-
-const onBoardClick = function (event) {
-  const data = event.target.id
-  $('#' + data).text(playerValue)
-  api.boardClick(data, playerValue)
-    .then(ui.onBoardClickSuccess)
-    .catch(ui.onBoardClickFailure)
-  playerValue = playerValue === 'O' ? 'X' : 'O'
-}
-
+// for this, use currentGame object
 // const onShowGame = function (event) {
 //   event.preventDefault()
 //   const form = event.target
@@ -88,7 +78,6 @@ module.exports = {
   onSignOut: onSignOut,
   onChangePassword: onChangePassword,
   onNewGame: onNewGame,
-  onGetAllGames: onGetAllGames,
-  onBoardClick: onBoardClick
+  onGetAllGames: onGetAllGames
   // onShowGame: onShowGame
 }
