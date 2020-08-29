@@ -47,37 +47,9 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
-const onNewGame = function (token) {
-  event.preventDefault()
-  api.newGame(store.user.token)
-    .then(ui.onNewGameSuccess)
-    .catch(ui.onNewGameFailure)
-}
-
-const onGetAllGames = function (token) {
-  event.preventDefault()
-  api.getAllGames(store.user.token)
-    .then(ui.onGetAllGamesSuccess)
-    .catch(ui.onGetAllGamesFailure)
-}
-
-// for this, use currentGame object
-// const onShowGame = function (event) {
-//   event.preventDefault()
-//   const form = event.target
-//   const data = getFormFields(form)
-//   console.log(data.game.id)
-//   api.showGame(data)
-//     .then(ui.onShowGameSuccess)
-//     .catch(ui.onShowGameFailure)
-// }
-
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onSignOut: onSignOut,
-  onChangePassword: onChangePassword,
-  onNewGame: onNewGame,
-  onGetAllGames: onGetAllGames
-  // onShowGame: onShowGame
+  onChangePassword: onChangePassword
 }
