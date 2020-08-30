@@ -1,6 +1,7 @@
 'use strict'
 
 const currentGame = require('./../currentGame')
+const gameLogic = require('./gameLogic')
 
 const onNewGameSuccess = function (response) {
   currentGame.game = response.game
@@ -20,13 +21,17 @@ const onGetAllGamesFailure = function (error) {
   console.log('Failure, error is', error)
 }
 
+// let gameArrayX = []
+
 const onBoardClickSuccess = function (response) {
   currentGame.game = response.game
   console.log(currentGame)
   console.log('Success! Here is your updated game', response)
-  const x = currentGame.game.cells
-  const gameArrayX = x.map(x.indexOf('X'))
-  console.log(gameArrayX)
+  const gameCells = currentGame.game.cells
+  gameLogic.gameLogic(gameCells)
+  // make variable for cells array
+  // const x = currentGame.game.cells
+  // use .map to make new array out of indices of X
 }
 
 const onBoardClickFailure = function (error) {

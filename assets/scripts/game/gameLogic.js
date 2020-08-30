@@ -1,8 +1,8 @@
 'use strict'
+
 // const winArray = require('./winArray')
 // const currentGame = require('./currentGame')
 
-// let gameArrayX = []
 // let gameArrayO = []
 
 // const gameLogicFunc = function (array) {
@@ -25,16 +25,33 @@
 //     }
 //   }
 // }
+const gameArrayX = []
+const gameArrayO = []
+// gameOver = false
 
-const gameLogic = function (array) {
-  array.map(array.indexOf)
+const gameLogic = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 'X' && !gameArrayX.includes(i)) {
+      gameArrayX.push(i)
+    } else if (arr[i] === 'O' && !gameArrayO.includes(i)) {
+      gameArrayO.push(i)
+    }
+  }
+  console.log(gameArrayX)
+  console.log(gameArrayO)
 }
 
-
+//
+// const gameLogic = function (response) {
+//   const newArray = response.game.cells
+//   const gameArrayX = newArray.map(function (item) {
+//     return item === 'X' ? newArray.indexOf(item)
+//   })
+//   return gameArrayX
+// )}
 
 // this doesn't make sense as for loop because i isn't being used in first half
 
 module.exports = {
-  gameLogic
-  // gameLogicFunc: gameLogicFunc
+  gameLogic: gameLogic
 }
