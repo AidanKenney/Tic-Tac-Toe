@@ -55,8 +55,12 @@ const onBoardClick = function (event) {
       .then(gameUi.onBoardClickSuccess)
       .catch(gameUi.onBoardClickFailure)
     playerValue = playerValue === 'O' ? 'X' : 'O'
-  } else {
+    // if div is not empty, but the game isn't over
+  } else if (!$('#' + data).is(':empty') && gameOver === false) {
     console.log('Spot taken, pick a different one.')
+    // if the game is over
+  } else if (gameOver === true) {
+    console.log('Game over!')
   }
 }
 

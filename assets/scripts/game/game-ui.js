@@ -25,17 +25,9 @@ const onGetAllGamesFailure = function (error) {
 const onBoardClickSuccess = function (response) {
   currentGame.game = response.game
   console.log(currentGame)
-  if (response.game.over === false) {
+  if (currentGame.game.over === false) {
     console.log('Success! Here is your updated game', response)
-  } else {
-    console.log('Game Over!', response)
-    $('.box').on('click', function () {
-      console.log("Sorry, game's over!")
-    })
   }
-
-  // const gameBoard = currentGame.game.cells
-  // gameLogic.gameCheck(gameBoard)
 }
 
 const onBoardClickFailure = function (error) {
