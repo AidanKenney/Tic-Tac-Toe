@@ -23,6 +23,9 @@ const gameCheck = function (gameBoard) {
     gameOver = false
   }
   console.log(gameOver)
+  // // if (gameOver === true) {
+  // //   $('.box').css('pointer-events', 'none')
+  // }
 }
 
 module.exports = {

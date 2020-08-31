@@ -21,7 +21,7 @@ const getAllGames = function (token) {
   })
 }
 
-const boardClick = function (data, playerValue, bool) {
+const boardClick = function (data, playerValue) {
   return $.ajax({
     url: config.apiUrl + '/games/' + currentGame.game._id,
     method: 'PATCH',
@@ -32,7 +32,7 @@ const boardClick = function (data, playerValue, bool) {
           index: data,
           value: playerValue
         },
-        over: bool
+        over: false
       }
     }
   })

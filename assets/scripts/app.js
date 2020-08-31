@@ -24,5 +24,5 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#get-all-games').on('click', gameEvents.onGetAllGames)
   // $('#show-game').on('submit', authEvents.onShowGame)
-  $('.box').one('click', gameEvents.onBoardClick)
+  $('.box').on('click', gameEvents.onBoardClick)
 })

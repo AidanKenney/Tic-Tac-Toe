@@ -3,9 +3,11 @@
 const gameApi = require('./game-api')
 const gameUi = require('./game-ui')
 const store = require('./../store')
+// const gameOver = require('./gameLogic')
 
 const onNewGame = function (token) {
   event.preventDefault()
+  $('.box').empty()
   gameApi.newGame(store.user.token)
     .then(gameUi.onNewGameSuccess)
     .catch(gameUi.onNewGameFailure)
@@ -22,11 +24,15 @@ let playerValue = 'X'
 
 const onBoardClick = function (event) {
   const data = event.target.id
-  $('#' + data).text(playerValue)
-  gameApi.boardClick(data, playerValue)
-    .then(gameUi.onBoardClickSuccess)
-    .catch(gameUi.onBoardClickFailure)
-  playerValue = playerValue === 'O' ? 'X' : 'O'
+  if ($('#' + data).is(':empty')) {
+    $('#' + data).html(playerValue)
+    gameApi.boardClick(data, playerValue)
+      .then(gameUi.onBoardClickSuccess)
+      .catch(gameUi.onBoardClickFailure)
+    playerValue = playerValue === 'O' ? 'X' : 'O'
+  } else {
+    console.log('Spot taken, pick a different one.')
+  }
 }
 
 module.exports = {
