@@ -1,57 +1,30 @@
 'use strict'
 
-// const winArray = require('./winArray')
-// const currentGame = require('./currentGame')
+let gameOver = false
 
-// let gameArrayO = []
-
-// const gameLogicFunc = function (array) {
-//   // we want to return a boolean - is game over or not?
-//   // how to tell if game is over?
-//   // do the indexes of ONE playerValue = one of the arrays from gameArray
-//   for (let i = 0; i < array.game.cells.length; i++) {
-//     gameArrayX.push(array.game.cells.indexOf('X'))
-//   }
-//   for (let i = 0; i < array.game.cells.length; i++) {
-//     gameArrayO.push(currentGame.game.cells.indexOf('O'))
-//   }
-//   for (let i = 0; i < winArray.length; i++) {
-//     if (gameArrayX === winArray[i]) {
-//       return true
-//     } else if (gameArrayO === winArray[i]) {
-//       return true
-//     } else {
-//       return false
-//     }
-//   }
-// }
-const gameArrayX = []
-const gameArrayO = []
-// gameOver = false
-
-const gameLogic = function (arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 'X' && !gameArrayX.includes(i)) {
-      gameArrayX.push(i)
-    } else if (arr[i] === 'O' && !gameArrayO.includes(i)) {
-      gameArrayO.push(i)
-    }
+const gameCheck = function (gameBoard) {
+  if (gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2] && gameBoard[0] !== '') {
+    gameOver = true
+  } else if (gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5] && gameBoard[3] !== '') {
+    gameOver = true
+  } else if (gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8] && gameBoard[6] !== '') {
+    gameOver = true
+  } else if (gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6] && gameBoard[0] !== '') {
+    gameOver = true
+  } else if (gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7] && gameBoard[1] !== '') {
+    gameOver = true
+  } else if (gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8] && gameBoard[2] !== '') {
+    gameOver = true
+  } else if (gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8] && gameBoard[0] !== '') {
+    gameOver = true
+  } else if (gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6] && gameBoard[2] !== '') {
+    gameOver = true
+  } else {
+    gameOver = false
   }
-  console.log(gameArrayX)
-  console.log(gameArrayO)
+  console.log(gameOver)
 }
 
-//
-// const gameLogic = function (response) {
-//   const newArray = response.game.cells
-//   const gameArrayX = newArray.map(function (item) {
-//     return item === 'X' ? newArray.indexOf(item)
-//   })
-//   return gameArrayX
-// )}
-
-// this doesn't make sense as for loop because i isn't being used in first half
-
 module.exports = {
-  gameLogic: gameLogic
+  gameCheck: gameCheck
 }
