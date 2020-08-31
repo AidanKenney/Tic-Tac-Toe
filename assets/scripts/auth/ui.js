@@ -37,22 +37,29 @@ const onSignOutSuccess = function (response) {
   $('#msg').text('Sign out successful.')
   $('#sign-out').hide()
   $('#change-password').hide()
+  $('.container').hide()
+  $('#get-all-games').hide()
+  $('#new-game').hide()
+  $('#all-games').hide()
   $('#sign-up').show()
   $('#sign-in').show()
 }
 const onSignOutFailure = function (error) {
   $('#msg').text('Sign out failed.')
+  $('#get-all-games').hide()
   console.log('Sign out failure, error is', error)
 }
 
 const onChangePasswordSuccess = function (response) {
   $('#msg').text('Password changed successfully.')
   $('#change-password').trigger('reset')
+  $('#get-all-games').hide()
   console.log('Change Pass success, response is ', response)
 }
 const onChangePasswordFailure = function (error) {
   $('#msg').text('Password not changed, try again.')
   $('#change-password').trigger('reset')
+  $('#get-all-games').hide()
   console.log('Change password failed, error is', error)
 }
 

@@ -20,7 +20,6 @@ const onNewGame = function (token) {
   // reset board to empty, reset values
   playerValue = 'X'
   gameOver = false
-  $('.box').empty()
   gameBoard = [
     '', '', '',
     '', '', '',
@@ -57,10 +56,10 @@ const onBoardClick = function (event) {
     playerValue = playerValue === 'O' ? 'X' : 'O'
     // if div is not empty, but the game isn't over
   } else if (!$('#' + data).is(':empty') && gameOver === false) {
-    console.log('Spot taken, pick a different one.')
+    $('#msg').text('Spot taken, pick a different one.')
     // if the game is over
   } else if (gameOver === true) {
-    console.log('Game over!')
+    $('#msg').text('Game over!')
   }
 }
 
