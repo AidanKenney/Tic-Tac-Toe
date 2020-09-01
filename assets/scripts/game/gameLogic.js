@@ -1,8 +1,10 @@
 'use strict'
 
 const isGameOver = function (gameBoard) {
+  // is winning conditions were present, game is over
   if (isGameWon(gameBoard) === true) {
     return true
+    // If no winner, but the game board if full it's a tie -- still over
   } else if (isGameWon(gameBoard) === false && gameBoard.filter(x => x === '').length === 0) {
     return true
   } else {
