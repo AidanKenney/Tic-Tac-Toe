@@ -2,33 +2,33 @@
 
 const currentGame = require('./../currentGame')
 const gameLogic = require('./gameLogic')
-// const gameOver = require('./game-events')
-// // const data = require('./game-events')
-// const playerValue = require('./game-events')
-// const gameLogic =
+const storeGameErrors = require('./../storeGameErrors')
 
 const onNewGameSuccess = function (response) {
   currentGame.game = response.game
-  console.log(currentGame.game._id)
-  console.log('Success! New game here', response)
   $('.container').show()
   $('.box').empty()
-  $('#get-all-games').hide()
-  $('#msg').hide()
+  $('#get-all-games').show()
+  $('#all-games').hide()
+  $('#msg').text('Start your new game!')
 }
 const onNewGameFailure = function (error) {
-  $('#get-all-games').hide()
-  console.log('Failure, error is', error)
+  storeGameErrors.error = error
+  $('#all-games').hide()
+  $('#msg').text('Error, new game did not start. Try again')
 }
 
 const onGetAllGamesSuccess = function (response) {
   $('.container').hide()
   $('#all-games').text('You have played ' + response.games.length + ' games.')
-  console.log('Success! Here are your games', response)
+  $('#all-games').show()
 }
 
 const onGetAllGamesFailure = function (error) {
-  console.log('Failure, error is', error)
+  storeGameErrors.error = error
+  $('.container').hide()
+  $('#all-games').text('Error, did not retrieve played games. Try again')
+  $('#all-games').show()
 }
 
 const onBoardClickSuccess = function (response) {
@@ -42,19 +42,22 @@ const onBoardClickSuccess = function (response) {
   if (response.game.over === true && gameLogic.isGameWon(gameArray) === false) {
     $('#msg').text('Game Over! It is a tie!')
     $('#msg').show()
+    $('#get-all-games').show()
   // if the game is over and even # of vals, O wins
   } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 0) {
     $('#msg').text('Game Over! O wins!')
     $('#msg').show()
+    $('#get-all-games').show()
   // if game is over and odd # of vals, X wins
   } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 1) {
     $('#msg').text('Game Over! X wins!')
     $('#msg').show()
+    $('#get-all-games').show()
   }
 }
 
 const onBoardClickFailure = function (error) {
-  console.log('Error, game not updated', error)
+  storeGameErrors.error = error
 }
 
 module.exports = {

@@ -58,15 +58,11 @@ const onBoardClick = function (event) {
     // if div is not empty, but the game isn't over
   } else if (!$('#' + data).is(':empty') && gameOver === false) {
     $('#msg').text('Spot taken, pick a different one.')
-    // if the game is over
-  } else if (gameOver === true) {
-    console.log('Game Over!')
   }
 }
 
 const updateGameBoard = function (index, string) {
   gameBoard.splice(index, 1, string)
-  console.log(gameBoard)
 }
 
 module.exports = {

@@ -32,6 +32,7 @@ const onSignIn = function (event) {
 
 const onSignOut = function (token) {
   event.preventDefault()
+
   api.signOut(store.user.token)
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
