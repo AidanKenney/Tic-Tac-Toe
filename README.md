@@ -9,7 +9,7 @@ Other problems that I was able to solve include implementing a way to notify the
 In the future, I would like to improve the styling of the UI, including turning off the :hover feature after the game ends and highlighting the winning squares instead. I would also like to improve the separation of concerns in my code, because I believe there are times when certain functions are doing far too much in and in a confusing location, and so become difficult to follow. If I could add more features, I'd like to add a "scoreboard" that tracks the wins of X and O as they are played, and add some sound and visual cues to the UI that make gameplay more immersive.
 
 
-Wireframes: ![Tic Tac Toe wireframe](https://imgur.com/Zck6EY0)
+Wireframes: (https://imgur.com/gallery/ib0BBx5)
 
 User Stories:
 
@@ -26,3 +26,5 @@ As a an impatient user, I want to move onto the next game quickly so I don't los
 As a user who has never played before, I would like an option for a quick tutorial so that I know how to play.
 
 As an impatient user, I want the game to end right when its a tie and no one can win so I don't waste my time.
+
+As a user who gets bored easily, I want to game to have sounds and visuals that keep me immersed in the game. 
