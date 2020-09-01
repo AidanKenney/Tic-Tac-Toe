@@ -1,13 +1,77 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-.form-field {
-  border: 1px solid black;
+body {
+  background-color: #738276
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Lato', sans-serif;
+
+  h1 {
+    margin: 5px auto 5px auto;
+  }
+
+  form {
+    margin: 5px auto 5px auto;
+
+    input {
+     background-color: #989898;
+   }
+  }
+}
+
+#msg {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+#all-games {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  margin: 5px;
+}
+
+.buttons {
+  text-align: center;
+
+  #new-game {
+    background-color: #989898;
+  }
+
+  #get-all-games {
+    background-color: #989898;
+  }
+}
+.form {
+  display: flex;
+  font-family: 'Lato', sans-serif;
+  justify-content: center;
+  padding: 10px;
+
+  .form-field {
+    border: 1px solid #4d5d53;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+
+    input {
+      border-radius: 25px;
+    }
+  }
 }
 
 .container {
-  // Set the board container to take up 100% of the viewport's height
+  // Set the board container to take up 80% of the viewport's height
   // in this case that's the height of the browser
-  height: 100vh;
+  height: 50vh;
+  padding-top: 10px;
 }
 
 .board {
@@ -24,7 +88,7 @@
 }
 
 .box {
-  background: white;
+  background: #738276;
   // set min height for each box to  be a third of the parent's min-width
   // (board's height)
   // calc method will take 100% of parent's height and divide by 3
@@ -38,8 +102,8 @@
   align-items: center;
 
   // use 'vh' to have the font-size change as the viewport height changes
-  font-size: 15vh;
-
+  font-size: 10vh;
+  font-family: 'Lato', sans-serif;
   // add a shadow to the x's and o's
   // place shadow 2px to right, 2px below the text
   // set the shadow color to be black & 25% opacity
@@ -49,8 +113,8 @@
   user-select: none;
 
   // we want to have borders on the right of each box and the bottom of each box
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
+  border-right: 6px solid #4d5d53;
+  border-bottom: 6px solid #4d5d53;
 
   // & is sass indicates a nested style. Same doing .box:nth-child(3n) in its down separate block.
   // select 3 right boxes using ':nth-child' -- selects elements based on their position to their siblings
@@ -71,7 +135,7 @@
   }
   //add some color when we hover on a box:
   &:hover {
-    background-color: LightSteelBlue;
+    background-color: #8f9779;
     cursor: pointer;
   }
 }

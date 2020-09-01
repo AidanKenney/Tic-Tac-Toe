@@ -6,10 +6,11 @@ const storeGameErrors = require('./../storeGameErrors')
 
 const onNewGameSuccess = function (response) {
   currentGame.game = response.game
-  $('.container').show()
+  $('#gameBoard').show()
   $('.box').empty()
   $('#get-all-games').show()
   $('#all-games').hide()
+  $('#change-password').hide()
   $('#msg').text('Start your new game!')
 }
 const onNewGameFailure = function (error) {
@@ -19,14 +20,14 @@ const onNewGameFailure = function (error) {
 }
 
 const onGetAllGamesSuccess = function (response) {
-  $('.container').hide()
+  $('#gameBoard').hide()
   $('#all-games').text('You have played ' + response.games.length + ' games.')
   $('#all-games').show()
 }
 
 const onGetAllGamesFailure = function (error) {
   storeGameErrors.error = error
-  $('.container').hide()
+  $('gameBoard').hide()
   $('#all-games').text('Error, did not retrieve played games. Try again')
   $('#all-games').show()
 }

@@ -37,7 +37,7 @@ const onSignOutSuccess = function (response) {
   $('#msg').text('Sign out successful.')
   $('#sign-out').hide()
   $('#change-password').hide()
-  $('.container').hide()
+  $('#gameBoard').hide()
   $('#get-all-games').hide()
   $('#new-game').hide()
   $('#all-games').hide()
