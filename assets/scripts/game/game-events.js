@@ -48,18 +48,19 @@ const onBoardClick = function (event) {
     // update local gameBoard array
     updateGameBoard(data, playerValue)
     // check local gameboard for gameOver bool
-    gameOver = gameLogic.gameCheck(gameBoard)
-    // if the game is over a call to the API saying so
+    gameOver = gameLogic.isGameOver(gameBoard)
+    // PATCH, call to the API with updates
     gameApi.boardClick(data, playerValue, gameOver)
       .then(gameUi.onBoardClickSuccess)
       .catch(gameUi.onBoardClickFailure)
+      // update playerValue
     playerValue = playerValue === 'O' ? 'X' : 'O'
     // if div is not empty, but the game isn't over
   } else if (!$('#' + data).is(':empty') && gameOver === false) {
     $('#msg').text('Spot taken, pick a different one.')
     // if the game is over
   } else if (gameOver === true) {
-    $('#msg').text('Game over!')
+    console.log('Game Over!')
   }
 }
 
