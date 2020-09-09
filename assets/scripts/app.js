@@ -5,6 +5,7 @@
 
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/game-events')
+const gameOver = require('./game/game-events')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -23,6 +24,14 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#get-all-games').on('click', gameEvents.onGetAllGames)
-  // $('#show-game').on('submit', authEvents.onShowGame)
+  $('#show-game').on('submit', authEvents.onShowGame)
   $('.box').on('click', gameEvents.onBoardClick)
+  if (gameOver === false) {
+    $('.box').hover(function () {
+      $(this).css('background-color', 'yellow')
+    },
+    function () {
+      $(this).css('background-color', 'pink')
+    })
+  }
 })

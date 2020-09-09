@@ -12,7 +12,14 @@ const onNewGameSuccess = function (response) {
   $('#all-games').hide()
   $('#change-password').hide()
   $('#msg').text('Start your new game!')
+  $('.box').mouseover(function () {
+    $(this).css('background-color', '#8f9779')
+  })
+  $('.box').mouseout(function () {
+    $(this).css('background-color', '#738276')
+  })
 }
+
 const onNewGameFailure = function (error) {
   storeGameErrors.error = error
   $('#all-games').hide()
@@ -44,16 +51,25 @@ const onBoardClickSuccess = function (response) {
     $('#msg').text('Game Over! It is a tie!')
     $('#msg').show()
     $('#get-all-games').show()
+    $('.box').mouseover(function () {
+      $(this).css('background-color', '#738276')
+    })
   // if the game is over and even # of vals, O wins
   } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 0) {
     $('#msg').text('Game Over! O wins!')
     $('#msg').show()
     $('#get-all-games').show()
+    $('.box').mouseover(function () {
+      $(this).css('background-color', '#738276')
+    })
   // if game is over and odd # of vals, X wins
   } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 1) {
     $('#msg').text('Game Over! X wins!')
     $('#msg').show()
     $('#get-all-games').show()
+    $('.box').mouseover(function () {
+      $(this).css('background-color', '#738276')
+    })
   }
 }
 
