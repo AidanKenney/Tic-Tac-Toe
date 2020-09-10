@@ -12,8 +12,9 @@ header {
   font-family: 'Lato', sans-serif;
 
   h1 {
-    margin: 5px auto 5px auto;
+    margin: 20px auto 10px auto;
   }
+
 
   form {
     margin: 5px auto 5px auto;
@@ -137,5 +138,15 @@ header {
   &:hover {
     background-color: #8f9779;
     cursor: pointer;
+  }
+}
+
+#link-to-sign-in {
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+
+  &:hover {
+    color: white;
   }
 }

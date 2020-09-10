@@ -6,6 +6,7 @@
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/game-events')
 const gameOver = require('./game/game-events')
+const authUi = require('./auth/ui')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -18,6 +19,7 @@ $(() => {
   $('#get-all-games').hide()
   $('#show-game').hide()
   $('#gameBoard').hide()
+  $('#sign-in').hide()
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('submit', authEvents.onSignOut)
@@ -26,12 +28,5 @@ $(() => {
   $('#get-all-games').on('click', gameEvents.onGetAllGames)
   $('#show-game').on('submit', authEvents.onShowGame)
   $('.box').on('click', gameEvents.onBoardClick)
-  if (gameOver === false) {
-    $('.box').hover(function () {
-      $(this).css('background-color', 'yellow')
-    },
-    function () {
-      $(this).css('background-color', 'pink')
-    })
-  }
+  $('#link-to-sign-in').on('click', authUi.onLinkToSignIn)
 })

@@ -8,6 +8,8 @@ const onSignUpSuccess = function (response) {
   $('#msg').text('Sign Up successful! Welcome ' + store.user.email + '. Please Sign In.')
   $('#sign-up').trigger('reset')
   $('#sign-up').hide()
+  $('#pw-warning').hide()
+  $('#sign-in').show()
 }
 const onSignUpFailure = function (error) {
   storeAuthErrors.error = error
@@ -21,6 +23,7 @@ const onSignInSuccess = function (response) {
   $('#sign-in').trigger('reset')
   $('#sign-up').hide()
   $('#sign-in').hide()
+  $('#pw-warning').hide()
   $('#sign-out').show()
   $('#change-password').show()
   $('#new-game').show()
@@ -42,7 +45,7 @@ const onSignOutSuccess = function (response) {
   $('#new-game').hide()
   $('#all-games').hide()
   $('#sign-up').show()
-  $('#sign-in').show()
+  $('#pw-warning').show()
 }
 
 const onSignOutFailure = function (error) {
@@ -63,6 +66,11 @@ const onChangePasswordFailure = function (error) {
   $('#get-all-games').hide()
 }
 
+const onLinkToSignIn = function () {
+  $('#sign-up').hide()
+  $('#sign-in').show()
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -71,5 +79,6 @@ module.exports = {
   onSignOutSuccess,
   onSignOutFailure,
   onChangePasswordSuccess,
-  onChangePasswordFailure
+  onChangePasswordFailure,
+  onLinkToSignIn
 }
