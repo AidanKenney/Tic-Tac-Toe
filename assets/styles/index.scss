@@ -1,8 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import './variables';
 
 body {
-  background-color: #738276
+  background-color: $background-color;
 }
 
 header {
@@ -12,7 +13,7 @@ header {
   font-family: 'Lato', sans-serif;
 
   h1 {
-    margin: 20px auto 10px auto;
+    margin: 20px auto 5px auto;
   }
 
 
@@ -20,14 +21,47 @@ header {
     margin: 5px auto 5px auto;
 
     input {
-     background-color: #989898;
+      background-color: $form-and-button-background-color;
    }
   }
 }
 
+#pw-warning {
+  font-family: 'Lato', sans-serif;
+  margin: 10px auto 10px auto;
+  text-align: center;
+}
+
 #msg {
   font-family: 'Lato', sans-serif;
+  margin: 10px auto;
   text-align: center;
+}
+
+#win-msg {
+  animation: blinkingText 1.5s infinite;
+  font-family: 'Lato', sans-serif;
+  margin: 10px auto 10px auto;
+  text-align: center;
+}
+
+@keyframes blinkingText{
+    0% { color: $blinking-text-color; }
+    49% { color: $blinking-text-color;}
+    60% { color: transparent;}
+    99% { color:transparent; }
+    100% { color: $blinking-text-color;   }
+}
+
+
+#link-to-sign-in {
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+
+  &:hover {
+    color: $hover-on-sign-in;
+  }
 }
 
 #all-games {
@@ -36,39 +70,26 @@ header {
   margin: 5px;
 }
 
-#win-msg {
-  animation: blinkingText 1.8s infinite;
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-}
-
-@keyframes blinkingText{
-    0%{     color: #000;    }
-    49%{    color: #000; }
-    60%{    color: transparent; }
-    99%{    color:transparent;  }
-    100%{   color: #000;    }
-}
-
 .buttons {
+  margin: 10px;
   text-align: center;
 
   #new-game {
-    background-color: #989898;
+    background-color: $form-and-button-background-color;
   }
 
   #get-all-games {
-    background-color: #989898;
+    background-color: $form-and-button-background-color;
   }
 }
 .form {
   display: flex;
   font-family: 'Lato', sans-serif;
   justify-content: center;
-  padding: 10px;
+  padding: 0px;
 
   .form-field {
-    border: 3px solid #4d5d53;
+    border: 3px solid $form-border-color;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
@@ -103,7 +124,7 @@ header {
 }
 
 .box {
-  background: #738276;
+  background: $board-color;
   // set min height for each box to  be a third of the parent's min-width
   // (board's height)
   // calc method will take 100% of parent's height and divide by 3
@@ -128,8 +149,8 @@ header {
   user-select: none;
 
   // we want to have borders on the right of each box and the bottom of each box
-  border-right: 6px solid #4d5d53;
-  border-bottom: 6px solid #4d5d53;
+  border-right: 6px solid $form-border-color;
+  border-bottom: 6px solid $form-border-color;
 
   // & is sass indicates a nested style. Same doing .box:nth-child(3n) in its down separate block.
   // select 3 right boxes using ':nth-child' -- selects elements based on their position to their siblings
@@ -150,17 +171,7 @@ header {
   }
   // add some color when we hover on a box:
   &:hover {
-    background-color: #8f9779;
+    background-color: $board-hover-color;
     cursor: pointer;
-  }
-}
-
-#link-to-sign-in {
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-
-  &:hover {
-    color: white;
   }
 }

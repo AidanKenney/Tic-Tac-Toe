@@ -31,6 +31,8 @@ const onNewGameFailure = function (error) {
 const onGetAllGamesSuccess = function (response) {
   $('#gameBoard').hide()
   $('#win-msg').hide()
+  $('#msg').text('Play again!')
+  $('#msg').show()
   $('#all-games').text('You have played ' + response.games.length + ' games.')
   $('#all-games').show()
 }
