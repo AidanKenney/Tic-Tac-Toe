@@ -36,6 +36,20 @@ header {
   margin: 5px;
 }
 
+#win-msg {
+  animation: blinkingText 1.8s infinite;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: #000; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: #000;    }
+}
+
 .buttons {
   text-align: center;
 

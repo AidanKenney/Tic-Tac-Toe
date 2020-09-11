@@ -44,6 +44,7 @@ const onSignOutSuccess = function (response) {
   $('#get-all-games').hide()
   $('#new-game').hide()
   $('#all-games').hide()
+  $('#win-msg').hide()
   $('#sign-up').show()
   $('#pw-warning').show()
 }

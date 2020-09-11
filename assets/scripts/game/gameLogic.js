@@ -14,6 +14,9 @@ const isGameOver = function (gameBoard) {
 
 const isGameWon = function (gameBoard) {
   if (gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2] && gameBoard[0] !== '') {
+    // $('#0').css('background-color', '#8f9779')
+    // $('#1').css('background-color', '#8f9779')
+    // $('#2').css('background-color', '#8f9779')
     return true
   } else if (gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5] && gameBoard[3] !== '') {
     return true
