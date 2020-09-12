@@ -14,6 +14,7 @@ const onNewGameSuccess = function (response) {
   $('#change-password').hide()
   $('#msg').text('Start your new game!')
   $('#msg').show()
+  $('.box').css('background-color', '#738276')
   $('.box').mouseover(function () {
     $(this).css('background-color', '#8f9779')
   })
@@ -66,18 +67,18 @@ const onBoardClickSuccess = function (response) {
     $('#msg').hide()
     $('#win-msg').show()
     $('#get-all-games').show()
-    $('.box').mouseover(function () {
-      $(this).css('background-color', '#738276')
-    })
+    // $('.box').mouseover(function () {
+    //   $(this).css('background-color', '#738276')
+    // })
   // if game is over and odd # of vals, X wins
   } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 1) {
     $('#win-msg').text('Game Over! X wins!')
     $('#msg').hide()
     $('#win-msg').show()
     $('#get-all-games').show()
-    $('.box').mouseover(function () {
-      $(this).css('background-color', '#738276')
-    })
+    // $('.box').mouseover(function () {
+    //   $(this).css('background-color', '#738276')
+    // })
   }
 }
 

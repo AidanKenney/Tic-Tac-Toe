@@ -104,24 +104,20 @@ header {
 }
 
 .container {
-  // Set the board container to take up 80% of the viewport's height
+  // Set the board container to take up 50% of the viewport's height
   // in this case that's the height of the browser
   height: 50vh;
   padding-top: 10px;
 }
-
-.board {
-  // set max height and min width of the boardClick// 100vh -  100% of the viewport height
-  // use method called 'calc' to subtract some space around each side
-  max-height: calc(100vh - 100px);
-  min-width: calc(100vh - 100px);
-  // setting margin to auto makes left and right margins same size, centers elements
-  margin: auto;
-
-  // add cat background to board:
-  // background: url('public/cat.jpg'); no repeat center center;
-  // background-size: cover;
-}
+//
+// .board {
+//   // set max height and min width of the boardClick// 100vh -  100% of the viewport height
+//   // use method called 'calc' to subtract some space around each side
+//   max-height: calc(100vh - 100px);
+//   min-width: calc(100vh - 100px);
+//   // setting margin to auto makes left and right margins same size, centers elements
+//   margin: auto;
+// }
 
 .box {
   background: $board-color;

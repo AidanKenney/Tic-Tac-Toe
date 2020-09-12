@@ -5,7 +5,6 @@
 
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/game-events')
-const gameOver = require('./game/game-events')
 const authUi = require('./auth/ui')
 
 // use require without a reference to ensure a file is bundled
