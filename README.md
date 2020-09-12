@@ -6,7 +6,7 @@ My planning process was to adhere as much as possible to the suggested schedule,
 
 Other problems that I was able to solve include implementing a way to notify the user of wins, losses, or ties at the correct time. At first, the order of operations I had created was such that the only array I was testing was the one being returned from the API. This meant that notifications of the game result came a turn late, after the array went through the test again. I solved this by creating a "local" array in my code that I could test before a call to the API was sent, and update the board simultaneously with the update to the API. Another problem solved was finding out which player one the game after a win notification. I solved this by filtering any blank cells from the array, and testing whether the array length was odd or even -- X always wins on odd numbered moves, O on even.
 
-In the future, I would like to improve the styling of the UI, including turning off the :hover feature after the game ends and highlighting the winning squares instead. I would also like to improve the separation of concerns in my code, because I believe there are times when certain functions are doing far too much in and in a confusing location, and so become difficult to follow. If I could add more features, I'd like to add a "scoreboard" that tracks the wins of X and O as they are played, and add some sound and visual cues to the UI that make gameplay more immersive.
+In the future, I would like to improve the styling of the UI to be mobile friendly and with more consistent spacing. I would also like to improve the separation of concerns in my code, because I believe there are times when certain functions are doing far too much in and in a confusing location, and so become difficult to follow. If I could add more features, I'd like to add a "scoreboard" that tracks the wins of X and O as they are played, and add some sound and visual cues to the UI that make gameplay more immersive.
 
 
 Wireframes: (https://imgur.com/gallery/ib0BBx5)
@@ -27,4 +27,4 @@ As a user who has never played before, I would like an option for a quick tutori
 
 As an impatient user, I want the game to end right when its a tie and no one can win so I don't waste my time.
 
-As a user who gets bored easily, I want to game to have sounds and visuals that keep me immersed in the game. 
+As a user who gets bored easily, I want to game to have sounds and visuals that keep me immersed in the game.
