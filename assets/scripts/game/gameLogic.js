@@ -54,14 +54,6 @@ const changeBoardColors = function (a, b, c) {
         $(this).css('background-color', '#738276')
       })
     }
-
-  // if ($('.box').attr('id') === a || $('.box').attr('id') === b || $('.box').attr('id') === c) {
-  //   $('.box').css('background-color', '#8f9779')
-  // } else if ($('.box').attr('id') !== a || $('.box').attr('id') !== b || $('.box').attr('id') !== c) {
-  //   $('.box').mouseover(function () {
-  //     $(this).css('background-color', '#738276')
-  //   })
-  // }
   }
 }
 
