@@ -3,6 +3,8 @@
 const currentGame = require('./../currentGame')
 const gameLogic = require('./gameLogic')
 const storeGameErrors = require('./../storeGameErrors')
+// const computerMove = require('./computerMove')
+// const gameEvents = require('./game-events')
 
 const onNewGameSuccess = function (response) {
   currentGame.game = response.game
@@ -73,7 +75,6 @@ const onBoardClickSuccess = function (response) {
     $('#msg').hide()
     $('#win-msg').show()
     $('#get-all-games').show()
-    // })
   }
 }
 
