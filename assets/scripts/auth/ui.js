@@ -72,6 +72,10 @@ const onLinkToSignIn = function () {
   $('#sign-in').show()
 }
 
+const onLinkBackToSignUp = function () {
+  $('#sign-in').hide()
+  $('#sign-up').show()
+}
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -81,5 +85,6 @@ module.exports = {
   onSignOutFailure,
   onChangePasswordSuccess,
   onChangePasswordFailure,
-  onLinkToSignIn
+  onLinkToSignIn,
+  onLinkBackToSignUp
 }
