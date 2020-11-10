@@ -53,8 +53,7 @@ header {
     100% { color: $blinking-text-color;   }
 }
 
-
-#link-to-sign-in {
+.sign-in-helpers {
   cursor: pointer;
   font-weight: bold;
   margin-top: 10px;

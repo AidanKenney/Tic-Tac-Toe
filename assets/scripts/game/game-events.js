@@ -5,17 +5,6 @@ const gameUi = require('./game-ui')
 const store = require('./../store')
 const gameLogic = require('./gameLogic')
 
-// const winningConditions = [
-//   [0, 1, 2],
-//   [3, 4, 5],
-//   [6, 7, 8],
-//   [0, 3, 6],
-//   [1, 4, 7],
-//   [2, 5, 8],
-//   [0, 4, 8],
-//   [2, 4, 6]
-// ]
-
 // start w/variable for user's first move
 let playerValue = 'X'
 let userTurn = true
@@ -84,20 +73,63 @@ const updateGameBoard = function (index, string) {
 }
 
 const computerMove = (gameBoard) => {
+  // define an array of the free spaces in the board
+  const freeSpaces = []
+  // push the index of every free space of the gameBoard into the array
+  gameBoard.forEach((item, index) => item === '' ? freeSpaces.push(index) : '')
+  // check if game is won
   const gameOver = gameLogic.isGameOver(gameBoard)
+  // if game is not over
   if (!gameOver) {
-    const randomNum = Math.ceil(Math.random() * 8)
-    if (gameBoard[randomNum] === '') {
-      $('#' + randomNum).html('O')
-      updateGameBoard(randomNum, 'O')
-      gameApi.boardClick(randomNum, 'O', gameOver)
+    // compNum will be set to most strategic index, or return -1
+    let compNum = computerStrategy(gameBoard)
+    // if compNum returned negative num
+    if (compNum === -1 || gameBoard[compNum] !== '') {
+      // set compNum to random number, pick one of the free spaces
+      compNum = freeSpaces[Math.ceil(Math.random() * (freeSpaces.length - 1))]
+    }
+    if (gameBoard[compNum] === '') {
+      $('#' + compNum).html('O')
+      updateGameBoard(compNum, 'O')
+      gameApi.boardClick(compNum, 'O', gameOver)
         .then(gameUi.onBoardClickSuccess)
         .catch(gameUi.onBoardClickFailure)
       userTurn = true
-    } else {
-      return computerMove(gameBoard)
     }
   }
+}
+
+const winningConditions = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
+
+const computerStrategy = (board) => {
+  // loop through the array containing winning combo arrays
+  for (let i = 0; i < winningConditions.length; i++) {
+    // define each condition as a 'row' for clarity
+    const row = winningConditions[i]
+    // declare variables for the spots on the gameboard that correspond to the winning indices
+    const spotOne = board[row[0]]
+    const spotTwo = board[row[1]]
+    const spotThree = board[row[2]]
+    // go through possibilities: one and two could match, one and three, two and three
+    if (spotOne === spotTwo && spotOne !== spotThree && spotOne !== '' && spotThree === '') {
+      // return the remaining index in order to foil the player's attempt to win!
+      return row[2]
+    } else if (spotOne === spotThree && spotOne !== spotTwo && spotOne !== '' && spotTwo === '') {
+      return row[1]
+    } else if (spotTwo === spotThree && spotTwo !== spotOne && spotTwo !== '' && spotOne === '') {
+      return row[0]
+    }
+  }
+  return -1
 }
 
 module.exports = {

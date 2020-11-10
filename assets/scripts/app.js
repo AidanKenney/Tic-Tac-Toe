@@ -28,4 +28,5 @@ $(() => {
   $('#show-game').on('submit', authEvents.onShowGame)
   $('.box').on('click', gameEvents.onBoardClick)
   $('#link-to-sign-in').on('click', authUi.onLinkToSignIn)
+  $('#link-back-to-sign-up').on('click', authUi.onLinkBackToSignUp)
 })
