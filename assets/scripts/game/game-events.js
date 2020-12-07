@@ -92,7 +92,6 @@ const computerMove = (gameBoard) => {
       $('#' + compNum).html(playerValue)
       updateGameBoard(compNum, playerValue)
       gameOver = isGameOver(gameBoard, playerValue)
-      console.log('This is gameOver within computer move', gameOver)
       gameApi.boardClick(compNum, playerValue, gameOver)
         .then(gameUi.onBoardClickSuccess)
         .catch(gameUi.onBoardClickFailure)
@@ -157,30 +156,27 @@ const isGameWon = (board, player) => {
     const spotThree = board[row[2]]
     // go through possibilities: one and two could match, one and three, two and three
     if (spotOne === spotTwo && spotOne === spotThree && spotOne === player) {
-      changeBoardColors(row[0], row[1], row[2])
+      gameUi.changeBoardColors(row[0], row[1], row[2])
       return true
     }
   }
   return false
 }
 
-const changeBoardColors = function (a, b, c) {
-  console.log('changeBoard colors at your service', a, b, c)
-  for (let i = 0; i < 9; i++) {
-    if (i === a || i === b || i === c) {
-      console.log('winning num')
-      $('#' + i).css('background-color', '#8f9779')
-      $('#' + i).mouseout(function () {
-        $(this).css('background-color', '#8f9779')
-      })
-    } else if (i !== a || i !== b || i !== c) {
-      console.log('not winning num')
-      $('#' + i).mouseover(function () {
-        $(this).css('background-color', '#738276')
-      })
-    }
-  }
-}
+// const changeBoardColors = function (a, b, c) {
+//   for (let i = 0; i < 9; i++) {
+//     if (i === a || i === b || i === c) {
+//       $('#' + i).css('background-color', '#8f9779')
+//       $('#' + i).mouseout(function () {
+//         $(this).css('background-color', '#8f9779')
+//       })
+//     } else if (i !== a || i !== b || i !== c) {
+//       $('#' + i).mouseover(function () {
+//         $(this).css('background-color', '#738276')
+//       })
+//     }
+//   }
+// }
 
 module.exports = {
   onNewGame: onNewGame,

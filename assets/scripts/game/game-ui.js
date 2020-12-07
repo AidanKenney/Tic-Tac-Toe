@@ -82,11 +82,27 @@ const onBoardClickFailure = function (error) {
   storeGameErrors.error = error
 }
 
+const changeBoardColors = function (a, b, c) {
+  for (let i = 0; i < 9; i++) {
+    if (i === a || i === b || i === c) {
+      $('#' + i).css('background-color', '#8f9779')
+      $('#' + i).mouseout(function () {
+        $(this).css('background-color', '#8f9779')
+      })
+    } else if (i !== a || i !== b || i !== c) {
+      $('#' + i).mouseover(function () {
+        $(this).css('background-color', '#738276')
+      })
+    }
+  }
+}
+
 module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onGetAllGamesSuccess,
   onGetAllGamesFailure,
   onBoardClickSuccess,
-  onBoardClickFailure
+  onBoardClickFailure,
+  changeBoardColors: changeBoardColors
 }
