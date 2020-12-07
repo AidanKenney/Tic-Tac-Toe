@@ -3,7 +3,6 @@
 const gameApi = require('./game-api')
 const gameUi = require('./game-ui')
 const store = require('./../store')
-const gameLogic = require('./gameLogic')
 
 // start w/variable for user's first move
 let playerValue = 'X'
@@ -49,7 +48,7 @@ const onBoardClick = function (event) {
     // update local gameBoard array
     updateGameBoard(data, playerValue)
     // check local gameboard for gameOver bool
-    gameOver = gameLogic.isGameOver(gameBoard)
+    gameOver = isGameOver(gameBoard, playerValue)
     // PATCH, call to the API with updates
     gameApi.boardClick(data, playerValue, gameOver)
       .then(gameUi.onBoardClickSuccess)
@@ -78,9 +77,10 @@ const computerMove = (gameBoard) => {
   // push the index of every free space of the gameBoard into the array
   gameBoard.forEach((item, index) => item === '' ? freeSpaces.push(index) : '')
   // check if game is won
-  const gameOver = gameLogic.isGameOver(gameBoard)
+  gameOver = isGameOver(gameBoard, playerValue)
   // if game is not over
   if (!gameOver) {
+    playerValue = 'O'
     // compNum will be set to most strategic index, or return -1
     let compNum = computerStrategy(gameBoard)
     // if compNum returned negative num
@@ -89,12 +89,15 @@ const computerMove = (gameBoard) => {
       compNum = freeSpaces[Math.ceil(Math.random() * (freeSpaces.length - 1))]
     }
     if (gameBoard[compNum] === '') {
-      $('#' + compNum).html('O')
-      updateGameBoard(compNum, 'O')
-      gameApi.boardClick(compNum, 'O', gameOver)
+      $('#' + compNum).html(playerValue)
+      updateGameBoard(compNum, playerValue)
+      gameOver = isGameOver(gameBoard, playerValue)
+      console.log('This is gameOver within computer move', gameOver)
+      gameApi.boardClick(compNum, playerValue, gameOver)
         .then(gameUi.onBoardClickSuccess)
         .catch(gameUi.onBoardClickFailure)
       userTurn = true
+      playerValue = 'X'
     }
   }
 }
@@ -130,6 +133,53 @@ const computerStrategy = (board) => {
     }
   }
   return -1
+}
+
+const isGameOver = function (gameBoard, player) {
+  // is winning conditions were present, game is over
+  if (isGameWon(gameBoard, player) === true) {
+    return true
+    // If no winner, but the game board if full it's a tie -- still over
+  } else if (isGameWon(gameBoard, player) === false && gameBoard.filter(x => x === '').length === 0) {
+    return true
+  }
+  return false
+}
+
+const isGameWon = (board, player) => {
+  // loop through the array containing winning combo arrays
+  for (let i = 0; i < winningConditions.length; i++) {
+    // define each condition as a 'row' for clarity
+    const row = winningConditions[i]
+    // declare variables for the spots on the gameboard that correspond to the winning indices
+    const spotOne = board[row[0]]
+    const spotTwo = board[row[1]]
+    const spotThree = board[row[2]]
+    // go through possibilities: one and two could match, one and three, two and three
+    if (spotOne === spotTwo && spotOne === spotThree && spotOne === player) {
+      changeBoardColors(row[0], row[1], row[2])
+      return true
+    }
+  }
+  return false
+}
+
+const changeBoardColors = function (a, b, c) {
+  console.log('changeBoard colors at your service', a, b, c)
+  for (let i = 0; i < 9; i++) {
+    if (i === a || i === b || i === c) {
+      console.log('winning num')
+      $('#' + i).css('background-color', '#8f9779')
+      $('#' + i).mouseout(function () {
+        $(this).css('background-color', '#8f9779')
+      })
+    } else if (i !== a || i !== b || i !== c) {
+      console.log('not winning num')
+      $('#' + i).mouseover(function () {
+        $(this).css('background-color', '#738276')
+      })
+    }
+  }
 }
 
 module.exports = {

@@ -1,7 +1,7 @@
 'use strict'
 
 const currentGame = require('./../currentGame')
-const gameLogic = require('./gameLogic')
+// const gameLogic = require('./gameLogic')
 const storeGameErrors = require('./../storeGameErrors')
 // const computerMove = require('./computerMove')
 // const gameEvents = require('./game-events')
@@ -55,7 +55,7 @@ const onBoardClickSuccess = function (response) {
   // filter array to get rid of empty cells
   const gameArrayOnlyVals = gameArray.filter(x => x !== '')
   // if game is over, but no winner, it's a tie
-  if (response.game.over === true && gameLogic.isGameWon(gameArray) === false) {
+  if (response.game.over === true && gameArray.includes('') === false) {
     $('#win-msg').text('Game Over! It is a tie!')
     $('#msg').hide()
     $('#win-msg').show()
@@ -64,13 +64,13 @@ const onBoardClickSuccess = function (response) {
       $(this).css('background-color', '#738276')
     })
   // if the game is over and even # of vals, O wins
-  } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 0) {
+  } else if (response.game.over === true && gameArrayOnlyVals.length % 2 === 0) {
     $('#win-msg').text('Game Over! O wins!')
     $('#msg').hide()
     $('#win-msg').show()
     $('#get-all-games').show()
   // if game is over and odd # of vals, X wins
-  } else if (gameLogic.isGameWon(gameArray) === true && gameArrayOnlyVals.length % 2 === 1) {
+  } else if (response.game.over === true && gameArrayOnlyVals.length % 2 === 1) {
     $('#win-msg').text('Game Over! X wins!')
     $('#msg').hide()
     $('#win-msg').show()
