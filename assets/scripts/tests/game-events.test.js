@@ -7,13 +7,31 @@ test('test for unfinished gameboards', () => {
     'O', '', 'X',
     '', 'X', '',
     'O', '', ''
-  ])).toBe(false)
+  ], 'X')).toBe(false)
 })
 
-test('test for finished gameboards', () => {
-  expect(gameEvents.isGameOver([
+// needs to account for DOM manipulation upon true response
+//
+// test('test for finished gameboards', () => {
+//   expect(gameEvents.isGameOver([
+//     'O', '', 'X',
+//     '', 'X', '',
+//     'X', '', 'O'
+//   ], 'X')).toBe(true)
+// })
+
+test('test for computer strategy, block win', () => {
+  expect(gameEvents.computerStrategy([
     'O', '', 'X',
-    '', 'X', '',
-    'X', '', 'O'
-  ])).toBe(true)
+    '', '', '',
+    'X', '', ''
+  ])).toBe(4)
+})
+
+test('test for computer strategy, pick random', () => {
+  expect(gameEvents.computerStrategy([
+    '', '', 'X',
+    '', '', '',
+    '', '', ''
+  ])).toBe(-1)
 })
